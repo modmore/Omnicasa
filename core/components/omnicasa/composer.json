@@ -1,0 +1,11 @@
+{
+    "require": {
+        "php": ">=7.4"
+    },
+    "minimum-stability": "RC",
+    "autoload": {
+        "psr-4": {
+            "modmore\\Omnicasa\\": "src/"
+        }
+    }
+}

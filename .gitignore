@@ -1,0 +1,4 @@
+config.core.php
+core/components/omnicasa/vendor/
+/vendor/
+.idea

@@ -1,0 +1,11 @@
+{
+    "require": {
+    },
+    "require-dev": {
+        "xpdo/xpdo": "^3.1"
+    },
+    "scripts": {
+        "build-schema": "vendor/bin/xpdo parse-schema mysql omnicasa.mysql.schema.xml core/components/omnicasa/src/ -v --update=1 --psr4=modmore\\\\Omnicasa",
+        "bootstrap": "php _bootstrap/index.php"
+    }
+}

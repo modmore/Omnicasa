@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="modmore\Omnicasa\Model" baseClass="xPDO\Om\xPDOSimpleObject" platform="mysql" defaultEngine="InnoDB" version="3.0">
+    <object class="ocProperty" table="omnicasa_properties">
+        <field key="alias" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="oc_ID" dbtype="int" precision="10" phptype="integer" null="false" default="0" attributes="unsigned" />
+
+        <field key="CreatedDate" dbtype="datetime" phptype="string" null="true" />
+        <field key="LastChangedDate" dbtype="datetime" phptype="string" null="true" />
+        <field key="SynchronisedDate" dbtype="datetime" phptype="string" null="true" />
+
+        <field key="OfficeName" dbtype="varchar" precision="191" phptype="string" null="true" default="" />
+        <field key="SiteID" dbtype="varchar" precision="191" phptype="string" null="true" default="" />
+        <field key="WebID" dbtype="int" precision="10" phptype="integer" null="true" default="" />
+        <field key="WebIDName" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="Ident" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="TypeDescription" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="Street" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="HouseNumber" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="City" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="Zip" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="District" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="GoogleX" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="GoogleY" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="CountryAbbr" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+        <field key="CountryName" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
+
+        <field key="DescriptionA" dbtype="mediumtext" phptype="string" null="true" default="" />
+        <field key="Price" dbtype="int" precision="10" phptype="integer" null="false" default="0" attributes="unsigned" />
+        <field key="SubStatus" dbtype="varchar" precision="191" phptype="string" null="true" default="" />
+        <field key="SubStatusName" dbtype="varchar" precision="191" phptype="string" null="true" default="" />
+        <field key="ConditionID" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="ConditionName" dbtype="varchar" precision="191" phptype="string" null="true" default="" />
+
+        <field key="SurfaceTotal" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceLiving" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceGarden" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceTerrace" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceConstructed" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceOffice" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceGround" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceGround2" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="SurfaceStore" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="NumberOfBedRooms" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="NumberOfBathRooms" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="NumberOfShowerRooms" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="NumberOfToilets" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="NumberOfGarages" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+        <field key="NumberOfParkings" dbtype="int" precision="10" phptype="integer" null="true" default="0" attributes="unsigned" />
+
+        <field key="HasGarden" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0" />
+        <field key="HasFurnished" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0" />
+        <field key="HasLift" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0" />
+        <field key="HasCellar" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0" />
+        <field key="HasAttic" dbtype="tinyint" precision="1" phptype="boolean" null="false" default="0" />
+
+        <field key="all_data" dbtype="mediumtext" phptype="array" null="true" default="" />
+
+        <index alias="oc_ID" name="oc_ID" primary="false" unique="false" type="BTREE">
+            <column key="oc_ID" length="" collation="A" null="false" />
+        </index>
+        <index alias="SiteID" name="SiteID" primary="false" unique="false" type="BTREE">
+            <column key="SiteID" length="" collation="A" null="false" />
+        </index>
+        <index alias="WebID" name="WebID" primary="false" unique="false" type="BTREE">
+            <column key="WebID" length="" collation="A" null="false" />
+        </index>
+        <index alias="Ident" name="Ident" primary="false" unique="false" type="BTREE">
+            <column key="Ident" length="" collation="A" null="false" />
+        </index>
+        <index alias="TypeDescription" name="TypeDescription" primary="false" unique="false" type="BTREE">
+            <column key="TypeDescription" length="" collation="A" null="false" />
+        </index>
+        <index alias="Street" name="Street" primary="false" unique="false" type="BTREE">
+            <column key="Street" length="" collation="A" null="false" />
+        </index>
+        <index alias="City" name="City" primary="false" unique="false" type="BTREE">
+            <column key="City" length="" collation="A" null="false" />
+        </index>
+        <index alias="Zip" name="Zip" primary="false" unique="false" type="BTREE">
+            <column key="Zip" length="" collation="A" null="false" />
+        </index>
+        <index alias="District" name="District" primary="false" unique="false" type="BTREE">
+            <column key="District" length="" collation="A" null="false" />
+        </index>
+        <index alias="GoogleX" name="GoogleX" primary="false" unique="false" type="BTREE">
+            <column key="GoogleX" length="" collation="A" null="false" />
+        </index>
+        <index alias="GoogleY" name="GoogleY" primary="false" unique="false" type="BTREE">
+            <column key="GoogleY" length="" collation="A" null="false" />
+        </index>
+        <index alias="CountryAbbr" name="CountryAbbr" primary="false" unique="false" type="BTREE">
+            <column key="CountryAbbr" length="" collation="A" null="false" />
+        </index>
+        <index alias="Price" name="Price" primary="false" unique="false" type="BTREE">
+            <column key="Price" length="" collation="A" null="false" />
+        </index>
+        <index alias="SubStatus" name="SubStatus" primary="false" unique="false" type="BTREE">
+            <column key="SubStatus" length="" collation="A" null="false" />
+        </index>
+        <index alias="ConditionID" name="ConditionID" primary="false" unique="false" type="BTREE">
+            <column key="ConditionID" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceTotal" name="SurfaceTotal" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceTotal" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceLiving" name="SurfaceLiving" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceLiving" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceTerrace" name="SurfaceTerrace" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceTerrace" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceConstructed" name="SurfaceConstructed" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceConstructed" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceOffice" name="SurfaceOffice" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceOffice" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceGround" name="SurfaceGround" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceGround" length="" collation="A" null="false" />
+        </index>
+        <index alias="SurfaceStore" name="SurfaceStore" primary="false" unique="false" type="BTREE">
+            <column key="SurfaceStore" length="" collation="A" null="false" />
+        </index>
+        <index alias="NumberOfBedRooms" name="NumberOfBedRooms" primary="false" unique="false" type="BTREE">
+            <column key="NumberOfBedRooms" length="" collation="A" null="false" />
+        </index>
+        <index alias="NumberOfBathRooms" name="NumberOfBathRooms" primary="false" unique="false" type="BTREE">
+            <column key="NumberOfBathRooms" length="" collation="A" null="false" />
+        </index>
+        <index alias="NumberOfShowerRooms" name="NumberOfShowerRooms" primary="false" unique="false" type="BTREE">
+            <column key="NumberOfShowerRooms" length="" collation="A" null="false" />
+        </index>
+        <index alias="NumberOfToilets" name="NumberOfToilets" primary="false" unique="false" type="BTREE">
+            <column key="NumberOfToilets" length="" collation="A" null="false" />
+        </index>
+        <index alias="NumberOfGarages" name="NumberOfGarages" primary="false" unique="false" type="BTREE">
+            <column key="NumberOfGarages" length="" collation="A" null="false" />
+        </index>
+        <index alias="NumberOfParkings" name="NumberOfParkings" primary="false" unique="false" type="BTREE">
+            <column key="NumberOfParkings" length="" collation="A" null="false" />
+        </index>
+        <index alias="HasGarden" name="HasGarden" primary="false" unique="false" type="BTREE">
+            <column key="HasGarden" length="" collation="A" null="false" />
+        </index>
+        <index alias="HasFurnished" name="HasFurnished" primary="false" unique="false" type="BTREE">
+            <column key="HasFurnished" length="" collation="A" null="false" />
+        </index>
+        <index alias="HasLift" name="HasLift" primary="false" unique="false" type="BTREE">
+            <column key="HasLift" length="" collation="A" null="false" />
+        </index>
+        <index alias="HasCellar" name="HasCellar" primary="false" unique="false" type="BTREE">
+            <column key="HasCellar" length="" collation="A" null="false" />
+        </index>
+        <index alias="HasAttic" name="HasAttic" primary="false" unique="false" type="BTREE">
+            <column key="HasAttic" length="" collation="A" null="false" />
+        </index>
+        <index alias="CreatedDate" name="CreatedDate" primary="false" unique="false" type="BTREE">
+            <column key="CreatedDate" length="" collation="A" null="false" />
+        </index>
+        <index alias="LastChangedDate" name="LastChangedDate" primary="false" unique="false" type="BTREE">
+            <column key="LastChangedDate" length="" collation="A" null="false" />
+        </index>
+        <index alias="SynchronisedDate" name="SynchronisedDate" primary="false" unique="false" type="BTREE">
+            <column key="SynchronisedDate" length="" collation="A" null="false" />
+        </index>
+    </object>
+
+</model>
