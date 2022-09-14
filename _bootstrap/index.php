@@ -96,6 +96,22 @@ foreach ($settings as $key => $opts) {
     }
 }
 
+/** @var Scheduler $scheduler */
+$path = $modx->getOption('scheduler.core_path', null, $modx->getOption('core_path') . 'components/scheduler/');
+$scheduler = $modx->getService('scheduler', 'Scheduler', $path . 'model/scheduler/');
+if (!$scheduler) {
+    echo "Unable to create scheduler task\n";
+}
+elseif (!createObject('sFileTask', array(
+    'class_key' => 'sFileTask',
+    'content' => 'elements/tasks/synchronise.php',
+    'namespace' => 'omnicasa',
+    'reference' => 'synchronise',
+    'description' => 'Synchronises properties from Omnicasa to MODX.'
+), ['namespace', 'reference'])) {
+    echo "Error saving Task\n";
+}
+
 // Make sure our module can be loaded. In this case we're using a composer-provided PSR4 autoloader.
 include $componentPath . '/core/components/omnicasa/vendor/autoload.php';
 

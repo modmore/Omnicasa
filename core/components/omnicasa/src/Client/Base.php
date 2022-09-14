@@ -25,8 +25,6 @@ class Base {
     {
         $data['customerName'] = $this->username;
         $data['customerPassword'] = $this->password;
-
-        $data['Limit2'] = 5;
         
         $param = json_encode($data, JSON_INVALID_UTF8_SUBSTITUTE | JSON_THROW_ON_ERROR);
 
@@ -45,13 +43,6 @@ class Base {
         if (array_key_exists($key, $result)) {
             $result = $result[$key];
         }
-
-        var_dump($result);
-
-
-//        var_dump($url);
-//        var_dump($response->getBody()->getContents());
-
 
         if (method_exists($resultClass, 'fromResponse')) {
             return $resultClass::fromResponse($result);

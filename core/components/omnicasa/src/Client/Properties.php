@@ -8,19 +8,27 @@ use modmore\Omnicasa\Client\Response\PropertyList;
 final class Properties extends Base {
 
     /**
-     * @param array $filter
-     * @param string|null $sort
+     * @param array $data
      * @return PropertyList
      */
-    public function list(array $filter = [], string $sort = null): PropertyList
+    public function list(array $data = []): PropertyList
     {
-        return $this->call('GetPropertyListJson', [
-
-        ], PropertyList::class);
+        return $this->call('GetPropertyListJson', $data, PropertyList::class);
     }
 
     public function get($id): Property
     {
 
+    }
+
+    public function total(): int
+    {
+        /** @var PropertyList $result */
+        $result = $this->call('GetPropertyListJson', [
+            'Limit1' => 0,
+            'Limit2' => 1,
+        ], PropertyList::class);
+
+        return $result->getTotalResults();
     }
 }

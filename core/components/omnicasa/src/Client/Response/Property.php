@@ -2,6 +2,8 @@
 
 namespace modmore\Omnicasa\Client\Response;
 
+use modmore\Omnicasa\Model\ocProperty;
+
 final class Property {
     private array $data;
 
@@ -33,5 +35,18 @@ final class Property {
     public function toArray(): array
     {
         return $this->data;
+    }
+
+    public function populate(ocProperty $dbProperty): void
+    {
+        foreach ($dbProperty->_fieldMeta as $key => $meta) {
+            if (array_key_exists($key, $this->data) && !empty($this->data[$key])) {
+                $dbProperty->set($key, $this->data[$key]);
+            }
+        }
+
+        $dbProperty->set('oc_ID', $this->data['ID']);
+        $dbProperty->set('SynchronisedDate', date('Y-m-d H:i:s'));
+        $dbProperty->set('all_data', $this->data);
     }
 }
