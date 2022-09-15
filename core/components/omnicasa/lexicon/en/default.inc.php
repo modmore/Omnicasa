@@ -1,6 +1,14 @@
 <?php
 
 $_lang['omnicasa'] = 'Omnicasa';
+$_lang['omnicasa.connected_as'] = 'Connected as [[+name]]';
+$_lang['omnicasa.synced_properties'] = 'Properties';
+$_lang['omnicasa.last_sync'] = 'Last Synchronised';
+$_lang['omnicasa.sync_now'] = 'Synchronise now';
+$_lang['omnicasa.never'] = 'never';
+$_lang['omnicasa.widget_name'] = 'Omnicasa';
+$_lang['omnicasa.widget_desc'] = 'Shows the status of the Omnicasa integration and allows scheduling an immediate synchronisation.';
+$_lang['omnicasa.sync_planned'] = 'Synchronisation added to queue.';
 
 
 // Settings
