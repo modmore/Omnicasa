@@ -49,7 +49,7 @@ foreach ($acceptFromUrl as $param) {
 }
 
 
-$total = $modx->getCount('modResource',$c);
+$total = $modx->getCount(ocProperty::class, $c);
 $modx->setPlaceholder($totalVar,$total);
 $c->limit($limit,$offset);
 
@@ -62,7 +62,7 @@ $cacheKey = 'requests/' . sha1(sha1($q).sha1($tpl).sha1($modx->getChunk($tpl)));
 if ($cache) {
     $cached = $modx->cacheManager->get($cacheKey, $omnicasa::$cacheOptions);
     if (!empty($cached)) {
-        return 'cached:' . $cached;
+        return $cached;
     }
 }
 
