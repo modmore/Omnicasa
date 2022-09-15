@@ -3,7 +3,7 @@
  * @var \MODX\Revolution\modX $modx
  * @var sTask $task
  * @var sTaskRun $run
- * @var array $data
+ * @var array $scriptProperties
  */
 
 use modmore\Omnicasa\Model\ocProperty;
@@ -15,15 +15,15 @@ if (!isset($modx)) {
     require_once MODX_CORE_PATH . 'vendor/autoload.php';
     $modx = new \MODX\Revolution\modX();
     $modx->initialize('mgr');
-    $data = [
-        'type' => 'full',
+    $scriptProperties = [
+        'type' => 'onetime',
     ];
 }
 
 // Re-schedule self recursively in incremental mode
-if ($task instanceof sTask) {
+if ($task instanceof sTask && ($scriptProperties['type'] !== 'onetime')) {
     $task->schedule('+30 minutes', [
-        'type' => 'incremental',
+        'type' => $scriptProperties['type'],
     ]);
 }
 
@@ -101,12 +101,10 @@ while ($start < $total) {
 //    break;
 }
 
-if ($data['type'] === 'full') {
-    $cleaned = $modx->removeCollection(ocProperty::class, [
-        'oc_ID:NOT IN' => $ids,
-    ]);
-    $log[] = "Removed $cleaned no longer available properties";
-}
+$cleaned = $modx->removeCollection(ocProperty::class, [
+    'oc_ID:NOT IN' => $ids,
+]);
+$log[] = "Removed $cleaned no longer available properties";
 
 $modx->getCacheManager()->refresh(['omnicasa' => []]);
 $log[] = "Emptied cache";
