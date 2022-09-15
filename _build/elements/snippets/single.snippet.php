@@ -13,6 +13,8 @@ $detailPrefix = $modx->getOption('detailPrefix', $scriptProperties, '');
 if (empty($detailPrefix) && isset($modx->resource)) {
     $detailPrefix = $modx->makeUrl($modx->resource->get('parent'), '', '', 'abs');
 }
+$thumbnailTpl = $modx->getOption('thumbnailTpl', $scriptProperties, '');
+$imageTpl = $modx->getOption('imageTpl', $scriptProperties, '');
 
 if (empty($_GET['slug']) || !is_string($_GET['slug'])) {
     $modx->sendErrorPage();
@@ -36,10 +38,27 @@ $a = array_merge($property->get('all_data'), $property->toArray(), [
     'url' => rtrim($detailPrefix, '/') . '/' . $property->get('alias'),
 ]);
 unset($a['all_data']);
+
+if (!empty($thumbnailTpl)) {
+    $a['Thumbnails'] = [];
+    foreach ($a['MediumPictureItems'] as $smallPicture) {
+        $a['Thumbnails'][] = $modx->getChunk($thumbnailTpl, $smallPicture);
+    }
+    $a['Thumbnails'] = implode("\n", $a['Thumbnails']);
+}
+
+if (!empty($imageTpl)) {
+    $a['Images'] = [];
+    foreach ($a['XLargePictureItems'] as $largePicture) {
+        $a['Images'][] = $modx->getChunk($imageTpl, $largePicture);
+    }
+    $a['Images'] = implode("\n", $a['Images']);
+}
+
+
 $json = json_encode($a, JSON_INVALID_UTF8_SUBSTITUTE | JSON_THROW_ON_ERROR);
 $a['dump'] = '<pre><code>' . htmlentities(print_r($a, true)) . '</code></pre>';
 $a['json'] = $json;
-
 $modx->toPlaceholders($a, 'property');
 
 return;
