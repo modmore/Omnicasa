@@ -6,10 +6,10 @@
  * @var array $data
  */
 
-// Direct invocation (i.e. executed from the CLI)
 use modmore\Omnicasa\Model\ocProperty;
 use modmore\Omnicasa\Omnicasa;
 
+// Direct invocation (i.e. executed from the CLI)
 if (!isset($modx)) {
     require_once dirname(__DIR__, 5) . '/config.core.php';
     require_once MODX_CORE_PATH . 'vendor/autoload.php';
@@ -107,6 +107,9 @@ if ($data['type'] === 'full') {
     ]);
     $log[] = "Removed $cleaned no longer available properties";
 }
+
+$modx->getCacheManager()->refresh(['omnicasa' => []]);
+$log[] = "Emptied cache";
 
 $output = "- " . implode("\n- ", $log) . "\n";
 

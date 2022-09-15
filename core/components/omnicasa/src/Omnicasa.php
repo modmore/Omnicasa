@@ -6,10 +6,14 @@ use modmore\Omnicasa\Client\Properties;
 use MODX\Revolution\modX;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use xPDO\xPDO;
 use xPDO\xPDOException;
 
 class Omnicasa {
 
+    public static $cacheOptions = [
+        xPDO::OPT_CACHE_KEY => 'omnicasa',
+    ];
     public modX $modx;
     private ClientInterface $httpClient;
     private RequestFactoryInterface $httpRequestFactory;

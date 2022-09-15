@@ -73,6 +73,13 @@ if (!createObject('modSnippet', array(
 ), 'name', false)) {
     echo "Error creating modSnippet.\n";
 }
+if (!createObject('modSnippet', array(
+    'name' => 'omnicasa.single',
+    'static' => true,
+    'static_file' => $componentPath . '/_build/elements/snippets/single.snippet.php',
+), 'name', false)) {
+    echo "Error creating modSnippet.\n";
+}
 
 
 $settings = include dirname(__DIR__) . '/_build/data/settings.php';
