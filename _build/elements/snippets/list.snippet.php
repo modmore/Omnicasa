@@ -42,9 +42,23 @@ if (is_array($where)) {
 // Allow URL parameters/POST values to be used for simple filtering
 foreach ($acceptFromUrl as $param) {
     if (array_key_exists($param, $_REQUEST) && !empty($_REQUEST[$param])) {
-        $c->andCondition([
-            "$param:=" => $_REQUEST[$param],
-        ]);
+        switch ($param) {
+            case 'Price_min':
+                $c->andCondition([
+                    "Price:>=" => $_REQUEST[$param],
+                ]);
+                break;
+            case 'Price_max':
+                $c->andCondition([
+                    "Price:<=" => $_REQUEST[$param],
+                ]);
+                break;
+
+            default:
+                $c->andCondition([
+                    "$param:=" => $_REQUEST[$param],
+                ]);
+        }
     }
 }
 
