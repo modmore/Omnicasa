@@ -21,7 +21,7 @@ class Omnicasa {
     private static ?Properties $properties = null;
 
     /**
-     * @throws InvalidAPIKeyException|xPDOException
+     * @throws xPDOException
      */
     public function __construct(modX $modx, ClientInterface $client, RequestFactoryInterface $requestFactory)
     {
@@ -29,7 +29,7 @@ class Omnicasa {
         $this->modx->lexicon->load('omnicasa:default');
 
         // Load xPDO package
-        if (!$this->modx->addPackage('modmore\\Omnicasa\\Model', __DIR__ . '/Model/', null, 'My\\Component\\')) {
+        if (!$this->modx->addPackage('modmore\\Omnicasa\\Model', __DIR__ . '/Model/')) {
             throw new xPDOException('Unable to load Omnicasa xPDO package!');
         }
 

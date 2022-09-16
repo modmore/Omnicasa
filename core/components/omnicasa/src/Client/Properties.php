@@ -2,7 +2,6 @@
 
 namespace modmore\Omnicasa\Client;
 
-use modmore\Omnicasa\Client\Response\Property;
 use modmore\Omnicasa\Client\Response\PropertyList;
 
 final class Properties extends Base {
@@ -14,11 +13,6 @@ final class Properties extends Base {
     public function list(array $data = []): PropertyList
     {
         return $this->call('GetPropertyListJson', $data, PropertyList::class);
-    }
-
-    public function get($id): Property
-    {
-
     }
 
     public function total(): int
