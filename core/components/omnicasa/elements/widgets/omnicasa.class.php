@@ -4,11 +4,10 @@ use modmore\Omnicasa\Omnicasa;
 
 class OmnicasaDashboardWidget extends \MODX\Revolution\modDashboardWidgetInterface
 {
-    private Omnicasa $omnicasa;
 
-    public function render()
+    public function render(): string
     {
-        $this->omnicasa = $this->modx->services->get(Omnicasa::class);
+        $this->modx->services->get(Omnicasa::class);
 
         $this->widget->set('name', $this->getTitleBar());
         $syncPlanned = $this->checkForSync();
@@ -94,8 +93,6 @@ Ext.onReady(function() {
 HTML
         );
 
-        $name = $this->getConnectedName();
-        $connectedAs = $this->modx->lexicon('omnicasa.connected_as', ['name' => htmlentities($name)]);
         $numProperties = $this->getPropertiesCount();
         $lastSync = $this->getLastSync();
         $lastSync = $lastSync > 0 ? $this->timeSince(time() - $lastSync) : $this->modx->lexicon('omnicasa.never');

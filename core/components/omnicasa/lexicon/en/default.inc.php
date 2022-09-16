@@ -1,7 +1,6 @@
 <?php
 
 $_lang['omnicasa'] = 'Omnicasa';
-$_lang['omnicasa.connected_as'] = 'Connected as [[+name]]';
 $_lang['omnicasa.synced_properties'] = 'Properties';
 $_lang['omnicasa.last_sync'] = 'Last Synchronised';
 $_lang['omnicasa.sync_now'] = 'Synchronise now';
