@@ -21,10 +21,19 @@ if (!isset($modx)) {
 }
 
 // Re-schedule self recursively in incremental mode
-if ($task instanceof sTask && ($scriptProperties['type'] !== 'onetime')) {
+if ($task instanceof sTask && (empty($scriptProperties['type']) || $scriptProperties['type'] !== 'onetime')) {
     $task->schedule('+30 minutes', [
-        'type' => $scriptProperties['type'],
+        'type' => $scriptProperties['type'] ?? 'repeating',
     ]);
+}
+
+$name = $modx->getOption('omnicasa.customerName');
+$pass = $modx->getOption('omnicasa.customerPassword');
+if (empty($name) || empty($pass)) {
+    if ($run) {
+        $run->addError('authentication', ['message' => 'Missing customerName or customerPassword credentials.']);
+    }
+    return 'Missing customerName or customerPassword credentials.';
 }
 
 /** @var Omnicasa $omnicasa */
