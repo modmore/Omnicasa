@@ -14,7 +14,7 @@ else {
     $basePath = '[[++core_path]]';
 }
 
-$widgets[0]= $modx->newObject('modDashboardWidget');
+$widgets[0]= $modx->newObject(\MODX\Revolution\modDashboardWidget::class);
 $widgets[0]->fromArray([
     'name' => 'omnicasa.widget_name',
     'description' => 'omnicasa.widget_desc',

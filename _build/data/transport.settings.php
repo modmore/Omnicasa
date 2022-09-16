@@ -1,8 +1,10 @@
 <?php
 
+use MODX\Revolution\modSystemSetting;
+
 $settingSource = include __DIR__ . '/settings.php';
 
-$settings = array();
+$settings = [];
 
 /**
  * Loop over setting stuff to interpret the xtype and to create the modSystemSetting object for the package.
@@ -15,8 +17,7 @@ foreach ($settingSource as $key => $options) {
     elseif (is_bool($val)) $xtype = 'modx-combo-boolean';
     else $xtype = 'textfield';
 
-    /** @var modSystemSetting */
-    $settings[$key] = $modx->newObject('modSystemSetting');
+    $settings[$key] = $modx->newObject(modSystemSetting::class);
     $settings[$key]->fromArray(array(
         'key' => 'omnicasa.' . $key,
         'xtype' => $xtype,
