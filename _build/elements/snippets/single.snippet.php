@@ -21,10 +21,12 @@ if (empty($_GET['slug']) || !is_string($_GET['slug'])) {
     return;
 }
 
+$slug = (string)$_GET['slug'];
+$slug = ltrim($slug, '/');
 // Prepare a query for the locally-stored properties
 $c = $modx->newQuery(ocProperty::class);
 $c->where([
-    'alias' => (string)$_GET['slug'],
+    'alias' => $slug,
 ]);
 
 /** @var ocProperty $property */
