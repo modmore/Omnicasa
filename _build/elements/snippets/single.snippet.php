@@ -70,7 +70,17 @@ $filterParams = [];
 foreach ($acceptFromUrl as $key) {
     if (!empty($filter[$key])) {
         $filterParams[$key] = (string)$filter[$key];
-        $where[$key] = (string)$filter[$key];
+        switch ($key) {
+            case 'Price_min':
+                $where['Price:>='] = (string)$filter[$key];
+                break;
+            case 'Price_max':
+                $where['Price:<='] = (string)$filter[$key];
+                break;
+
+            default:
+                $where[$key .':='] = (string)$filter[$key];
+        }
     }
 }
 
