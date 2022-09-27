@@ -1,5 +1,6 @@
 {
     "require": {
+      "ext-json": "*"
     },
     "require-dev": {
         "xpdo/xpdo": "^3.1"

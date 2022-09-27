@@ -30,18 +30,18 @@ if (empty($detailPrefix) && isset($modx->resource)) {
 
 // Prepare a query for the locally-stored properties
 $c = $modx->newQuery(ocProperty::class);
-//$c->where([
-//
-//]);
 
 // Allow generic &where to filter results
 if (is_array($where)) {
     $c->andCondition($where);
 }
 
+$filterParams = [];
+
 // Allow URL parameters/POST values to be used for simple filtering
 foreach ($acceptFromUrl as $param) {
     if (array_key_exists($param, $_REQUEST) && !empty($_REQUEST[$param])) {
+        $filterParams[$param] = (string)$_REQUEST[$param];
         switch ($param) {
             case 'Price_min':
                 $c->andCondition([
@@ -71,7 +71,7 @@ $c->sortby($sortby, $sortdir);
 
 $c->prepare();
 $q = $c->toSQL();
-$cacheKey = 'requests/' . sha1(sha1($q).sha1($tpl).sha1($modx->getChunk($tpl)));
+$cacheKey = 'requests/' . sha1(sha1($q).sha1($tpl).sha1($modx->getChunk($tpl)).sha1(json_encode($filterParams)));
 
 if ($cache) {
     $cached = $modx->cacheManager->get($cacheKey, $omnicasa::$cacheOptions);
@@ -85,10 +85,13 @@ if ($cache) {
 $out = [];
 /** @var ocProperty $property */
 $idx = 0;
+$suffix = strpos($detailPrefix, '?') === false ? '?' : '&';
+$suffix .= http_build_query(['filter' => $filterParams]);
 foreach ($modx->getIterator(ocProperty::class, $c) as $property) {
+    $url = rtrim($detailPrefix, '/') . '/' . $property->get('alias') . $suffix;
     $a = array_merge($property->get('all_data'), $property->toArray(), [
         'idx' => $idx,
-        'url' => rtrim($detailPrefix, '/') . '/' . $property->get('alias'),
+        'url' => $url,
     ]);
     unset($a['all_data']);
     $a['dump'] = '<pre><code>' . htmlentities(print_r($a, true)) . '</code></pre>';
