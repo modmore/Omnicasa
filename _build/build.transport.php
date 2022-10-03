@@ -29,7 +29,7 @@ if (!defined('MOREPROVIDER_BUILD')) {
     define('PKG_NAME', 'Omnicasa');
     define('PKG_NAMESPACE', 'omnicasa');
     define('PKG_VERSION', '1.0.0');
-    define('PKG_RELEASE', 'rc6');
+    define('PKG_RELEASE', 'rc7');
 
     /* load modx */
     require_once dirname(__DIR__) . '/config.core.php';
