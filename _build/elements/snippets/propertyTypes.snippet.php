@@ -37,6 +37,9 @@ $c->sortby($sortby, $sortdir);
 
 $cacheKey = 'propertyTypes';
 
+$active = !empty($_GET['WebID']) ? (int)$_GET['WebID'] : '';
+$cacheKey .= !empty($active) ? '/' . $active : '';
+
 if ($cache) {
     $cached = $modx->cacheManager->get($cacheKey, $omnicasa::$cacheOptions);
     if (!empty($cached)) {
@@ -51,6 +54,7 @@ $out = [];
 $idx = 0;
 foreach ($modx->getIterator(ocProperty::class, $c) as $property) {
     $a = $property->toArray('', false, true);
+    $a['selected'] = (int)$active === $a['WebID'] ? '1' : '';
     $out[] = $modx->getChunk($tpl, $a);
     $idx++;
 }

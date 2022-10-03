@@ -36,6 +36,9 @@ $c->sortby($sortby, $sortdir);
 
 $cacheKey = 'cities';
 
+$active = !empty($_GET['City']) ? (string)$_GET['City'] : '';
+$cacheKey .= !empty($active) ? '/' . sha1($active) : '';
+
 if ($cache) {
     $cached = $modx->cacheManager->get($cacheKey, $omnicasa::$cacheOptions);
     if (!empty($cached)) {
@@ -60,6 +63,7 @@ foreach ($modx->getIterator(ocProperty::class, $c) as $property) {
     $name = implode(' ', $name);
     $name = ucfirst($name);
     $a['CityName'] = $name;
+    $a['selected'] = $active === $a['City'] ? '1' : '';
 
     $out[] = $modx->getChunk($tpl, $a);
     $idx++;
