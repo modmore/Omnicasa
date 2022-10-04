@@ -15,6 +15,6 @@ return [
     ],
     'omnicasa.cities' => [
         'description' => 'Renders a list of cities based on available properties. Provide as City to filter in omnicasa.list.',
-        'file' =>  'propertyTypes.snippet.php',
+        'file' =>  'cities.snippet.php',
     ],
 ];
