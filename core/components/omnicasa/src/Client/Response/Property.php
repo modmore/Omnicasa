@@ -45,6 +45,7 @@ final class Property {
             }
         }
 
+        $dbProperty->set('type_of_property', ((int)$this->data['Goal'] === 1) ? ocProperty::TYPE_RENT : ocProperty::TYPE_SALE);
         $dbProperty->set('oc_ID', $this->data['ID']);
         $dbProperty->set('SynchronisedDate', date('Y-m-d H:i:s'));
         $dbProperty->set('all_data', $this->data);

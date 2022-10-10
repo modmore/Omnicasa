@@ -24,6 +24,9 @@ if ($transport->xpdo) {
 
             $manager->createObjectContainer(ocProperty::class);
 
+            $manager->addField(ocProperty::class, 'type_of_property', ['after' => 'oc_ID']);
+            $manager->addIndex(ocProperty::class, 'type_of_property');
+
             $modx->setLogLevel($level);
 
             break;

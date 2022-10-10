@@ -1,6 +1,7 @@
 <?php
 /* Get the core config */
 
+use modmore\Omnicasa\Model\ocProperty;
 use MODX\Revolution\modDashboardWidget;
 
 $componentPath = dirname(__DIR__);
@@ -157,6 +158,8 @@ new \modmore\Omnicasa\Omnicasa(
 $manager = $modx->getManager();
 $manager->createObjectContainer(\modmore\Omnicasa\Model\ocProperty::class);
 
+$manager->addField(ocProperty::class, 'type_of_property', ['after' => 'oc_ID']);
+$manager->addIndex(ocProperty::class, 'type_of_property');
 
 // Clear the cache
 $modx->cacheManager->refresh();

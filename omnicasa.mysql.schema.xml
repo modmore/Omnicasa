@@ -3,6 +3,7 @@
     <object class="ocProperty" table="omnicasa_properties">
         <field key="alias" dbtype="varchar" precision="191" phptype="string" null="false" default="" />
         <field key="oc_ID" dbtype="int" precision="10" phptype="integer" null="false" default="0" attributes="unsigned" />
+        <field key="type_of_property" dbtype="varchar" precision="20" phptype="string" null="false" default="sale" />
 
         <field key="CreatedDate" dbtype="datetime" phptype="string" null="true" />
         <field key="LastChangedDate" dbtype="datetime" phptype="string" null="true" />
@@ -57,6 +58,9 @@
 
         <index alias="oc_ID" name="oc_ID" primary="false" unique="false" type="BTREE">
             <column key="oc_ID" length="" collation="A" null="false" />
+        </index>
+        <index alias="type_of_property" name="type_of_property" primary="false" unique="false" type="BTREE">
+            <column key="type_of_property" length="" collation="A" null="false" />
         </index>
         <index alias="SiteID" name="SiteID" primary="false" unique="false" type="BTREE">
             <column key="SiteID" length="" collation="A" null="false" />

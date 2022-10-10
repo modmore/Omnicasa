@@ -58,4 +58,6 @@ use xPDO\xPDO;
  */
 class ocProperty extends \xPDO\Om\xPDOSimpleObject
 {
+    public const TYPE_RENT = 'rent';
+    public const TYPE_SALE = 'sale';
 }

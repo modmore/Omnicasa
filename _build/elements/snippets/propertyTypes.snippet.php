@@ -39,6 +39,9 @@ $cacheKey = 'propertyTypes';
 
 $active = !empty($_GET['WebID']) ? (int)$_GET['WebID'] : '';
 $cacheKey .= !empty($active) ? '/' . $active : '';
+if (is_array($where) && !empty($where)) {
+    $cacheKey .= '_' . sha1(json_encode($where, JSON_INVALID_UTF8_IGNORE));
+}
 
 if ($cache) {
     $cached = $modx->cacheManager->get($cacheKey, $omnicasa::$cacheOptions);

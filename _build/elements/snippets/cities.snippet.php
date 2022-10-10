@@ -38,6 +38,9 @@ $cacheKey = 'cities';
 
 $active = !empty($_GET['City']) ? (string)$_GET['City'] : '';
 $cacheKey .= !empty($active) ? '/' . sha1($active) : '';
+if (is_array($where) && !empty($where)) {
+    $cacheKey .= '_' . sha1(json_encode($where, JSON_INVALID_UTF8_IGNORE));
+}
 
 if ($cache) {
     $cached = $modx->cacheManager->get($cacheKey, $omnicasa::$cacheOptions);

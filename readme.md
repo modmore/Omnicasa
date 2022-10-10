@@ -50,6 +50,11 @@ The following properties are available in the `omnicasa.list` snippet:
 
 The tpl chunk has access to all data in the Omnicasa API. For a look at all the available data, add `[[+dump]]` and view the page. The exact available data seems to occasionally differ from property to property, so be aware of that: check if values are set.
 
+Some noteworthy fields:
+
+- `type_of_property` is either `rent` or `sale`
+- `oc_ID` is the ID of the property in Omnicasa. The local ID in MODX is `[[+id]]`.
+
 Very minimal `&tpl` example:
 
 ```html 
@@ -103,12 +108,12 @@ The snippet will check `$_GET['WebID']` for the property type that is actively s
 
 Available properties:
 
-| Property   | Description                                                                                                                                                                                                                                          | Default     |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `&tpl`     | Provide the name of a chunk to render individual property types. In the chunk, you can use `[[+WebID]]`, `[[+WebIDName]]`, `[[+Count]]`, and `[[+selected]]` placeholders.                                                                           | (empty)     |
-| `&sortby`  | Field to sort the results by. One of `WebID`, `WebIDName`, or `Count`.                                                                                                                                                                               | `WebIDName` |
-| `&sortdir` | Either `ASC` or `DESC` to control the sort direction                                                                                                                                                                                                 | `ASC`       |
-| `&where`   | Generic filter property, provide a JSON string. This applies to the properties, so for example ```&where=`{"SubStatus:!=": "6"}` ``` will hide property types that only has properties in the sold status. Note that valid JSON means double quotes! | (empty)     |
+| Property   | Description                                                                                                                                                                                                                                                                                                                                     | Default     |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| `&tpl`     | Provide the name of a chunk to render individual property types. In the chunk, you can use `[[+WebID]]`, `[[+WebIDName]]`, `[[+Count]]`, and `[[+selected]]` placeholders.                                                                                                                                                                      | (empty)     |
+| `&sortby`  | Field to sort the results by. One of `WebID`, `WebIDName`, or `Count`.                                                                                                                                                                                                                                                                          | `WebIDName` |
+| `&sortdir` | Either `ASC` or `DESC` to control the sort direction                                                                                                                                                                                                                                                                                            | `ASC`       |
+| `&where`   | Generic filter property, provide a JSON string. This applies to the properties, so for example ```&where=`{"SubStatus:!=": "6"}` ``` will hide property types that only have properties in the sold status, and ```&where=`{"type_of_property":"rent"}``` will show only results for rent properties. Note that valid JSON means double quotes! | (empty)     |
 
 An example to render radio buttons that pass the WebID as URL parameter:
 
@@ -136,12 +141,12 @@ The snippet will check `$_GET['City']` for the city that is actively selected.
 
 Available properties:
 
-| Property   | Description                                                                                                                                                                                                                                                      | Default |
-|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| `&tpl`     | Provide the name of a chunk to render individual cities. In the chunk, you can use `[[+City]]`, `[[+CityName]]`, `[[+Count]]`, and `[[+selected]]` placeholders. CityName is a normalised version of the City placeholder, which does not use consistent casing. | (empty) |
-| `&sortby`  | Field to sort the results by. One of `City` or `Count`.                                                                                                                                                                                                          | `City`  |
-| `&sortdir` | Either `ASC` or `DESC` to control the sort direction                                                                                                                                                                                                             | `ASC`   |
-| `&where`   | Generic filter property, provide a JSON string. This applies to the properties, so for example ```&where=`{"SubStatus:!=": "6"}` ``` will hide property types that only has properties in the sold status. Note that valid JSON means double quotes!             | (empty) |
+| Property   | Description                                                                                                                                                                                                                                                                                                                             | Default |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| `&tpl`     | Provide the name of a chunk to render individual cities. In the chunk, you can use `[[+City]]`, `[[+CityName]]`, `[[+Count]]`, and `[[+selected]]` placeholders. CityName is a normalised version of the City placeholder, which does not use consistent casing.                                                                        | (empty) |
+| `&sortby`  | Field to sort the results by. One of `City` or `Count`.                                                                                                                                                                                                                                                                                 | `City`  |
+| `&sortdir` | Either `ASC` or `DESC` to control the sort direction                                                                                                                                                                                                                                                                                    | `ASC`   |
+| `&where`   | Generic filter property, provide a JSON string. This applies to the properties, so for example ```&where=`{"SubStatus:!=": "6"}` ``` will hide cities that only have properties in the sold status, and ```&where=`{"type_of_property":"rent"}``` will show only results for rent properties. Note that valid JSON means double quotes! | (empty) |
 
 An example to render radio buttons that pass the City as URL parameter:
 

@@ -18,6 +18,7 @@ class ocProperty extends \modmore\Omnicasa\Model\ocProperty
         array (
             'alias' => '',
             'oc_ID' => 0,
+            'type_of_property' => 'sale',
             'CreatedDate' => NULL,
             'LastChangedDate' => NULL,
             'SynchronisedDate' => NULL,
@@ -82,6 +83,14 @@ class ocProperty extends \modmore\Omnicasa\Model\ocProperty
                 'null' => false,
                 'default' => 0,
                 'attributes' => 'unsigned',
+            ),
+            'type_of_property' => 
+            array (
+                'dbtype' => 'varchar',
+                'precision' => '20',
+                'phptype' => 'string',
+                'null' => false,
+                'default' => 'sale',
             ),
             'CreatedDate' => 
             array (
@@ -464,6 +473,22 @@ class ocProperty extends \modmore\Omnicasa\Model\ocProperty
                 'columns' => 
                 array (
                     'oc_ID' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
+            'type_of_property' => 
+            array (
+                'alias' => 'type_of_property',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'type_of_property' => 
                     array (
                         'length' => '',
                         'collation' => 'A',
