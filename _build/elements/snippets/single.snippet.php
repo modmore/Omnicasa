@@ -92,6 +92,7 @@ if ($where) {
     $nc->where($where);
 }
 $nc->where([
+    'type_of_property' => $property->get('type_of_property'),
     'id:!=' => $property->get('id'),
     $sortby . ':<=' => $property->get($sortby),
 ]);
@@ -108,6 +109,7 @@ if ($where) {
     $pc->where($where);
 }
 $pc->where([
+    'type_of_property' => $property->get('type_of_property'),
     'id:!=' => $property->get('id'),
     $sortby . ':>=' => $property->get($sortby),
 ]);
