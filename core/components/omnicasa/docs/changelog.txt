@@ -1,5 +1,5 @@
-Omnicasa 1.0.0-rc1
+Omnicasa 1.0.0-pl
 ------------------
-Released on 2022-09-16
+Released on 2022-11-18
 
-- First release
+- First public release
