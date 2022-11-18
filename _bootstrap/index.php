@@ -98,6 +98,13 @@ if (!createObject('modSnippet', array(
 ), 'name', false)) {
     echo "Error creating modSnippet.\n";
 }
+if (!createObject('modSnippet', array(
+    'name' => 'omnicasa.propertyRedirect',
+    'static' => true,
+    'static_file' => $componentPath . '/_build/elements/snippets/propertyRedirect.snippet.php',
+), 'name', false)) {
+    echo "Error creating modSnippet.\n";
+}
 
 
 $settings = include dirname(__DIR__) . '/_build/data/settings.php';

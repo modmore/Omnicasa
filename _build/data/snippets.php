@@ -17,4 +17,8 @@ return [
         'description' => 'Renders a list of cities based on available properties. Provide as City to filter in omnicasa.list.',
         'file' =>  'cities.snippet.php',
     ],
+    'omnicasa.propertyRedirect' => [
+        'description' => 'Redirect a request to either the error page or the friendly alias for a property. Expects a "property" URL parameter.',
+        'file' =>  'propertyRedirect.snippet.php',
+    ],
 ];
