@@ -165,5 +165,15 @@ And in the `ocCity` chunk:
 </label>
 ```
 
+## Object URL / redirect
+
+Omnicasa uses an internal object url to allow linking from its own dashboard or emails to the properties on your own website. To set that up, use the `omnicasa.propertyRedirect` snippet.
+
+```html
+[[!omnicasa.propertyRedirect? &detailPrefix=`...`]]
+```
+
+Make sure to match the detailPrefix to the detailPrefix used in the list/single snippets. 
+
 
 
