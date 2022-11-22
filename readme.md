@@ -8,9 +8,13 @@ This is an integration with [Omnicasa](https://www.omnicasa.com/) for MODX Revol
 
 A [Scheduler](https://modmore.com/extras/scheduler/) task is provided to synchronise data from the API with a local database. Make sure Scheduler is installed before installing the Omnicasa package to have it registered, and that Scheduler is set up with a cron job to run in the background. 
 
-Then, just schedule it once via the Scheduler dashboard to kick off a recurring full synchronisation. 
+Then, schedule the omnicasa task once via the Scheduler dashboard to kick off a recurring full synchronisation. It will run automatically every 30 minutes after that. 
 
-A dashboard widget is also provided. Add it to your dashboard to see synchronisation status and to trigger an extra synchronisation on-demand.
+A dashboard widget is also provided. Add it to your dashboard to see synchronisation status and to trigger an extra synchronisation on-demand. This on-demand synchronisation also requires Scheduler.
+
+## Authentication
+
+Add the customer name and password, provided by your Omnicasa account manager, into the `omnicasa.customerName` and `omnicasa.customerPassword` system settings respectively.
 
 ## Listing properties
 
